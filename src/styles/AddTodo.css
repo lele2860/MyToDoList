@@ -1,0 +1,25 @@
+.btn {
+    display: inline-block;
+    border-radius: 10px;
+    background-color: #1677FF;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 10px;
+  }
+.textArea{
+    padding: 4px 10px;
+    width: 450px;
+    border-radius: 10px;
+    height: 70px;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+form{
+    display: grid;
+    justify-content: end;
+}
