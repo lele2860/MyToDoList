@@ -4,6 +4,7 @@ import "../styles/AddTodo.css"
 
 
 
+
 const AddTodo = (props: any) => {
     const [addValue, setAddValue] = useState("")
     const [isValid, setIsValid] = useState<Boolean>(true)
@@ -23,7 +24,11 @@ const AddTodo = (props: any) => {
 
     const callFunction = (e: React.MouseEvent<HTMLInputElement>) => {
         e.preventDefault()
-        if (isValid||addValue==="") { return }
+        if (isValid||addValue==="") { 
+            setIsValid(true)
+            setIsTouch(true)
+            return 
+        }
         props.click(addValue)
         setAddValue("")
     }
@@ -44,7 +49,7 @@ const AddTodo = (props: any) => {
                     type='submit' />
 
             </form>
-            <small><center>{isTouch && isValid && errorMessage}</center></small>
+            <small><center>{ isTouch&&isValid && errorMessage}</center></small>
         </div>
     )
 }

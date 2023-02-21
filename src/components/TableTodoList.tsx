@@ -1,36 +1,40 @@
-import React from "react";
+import React, { Fragment } from "react";
 import "../styles/TableTodoList.css"
+import { ItoDoItem } from "../interfaces/ItoDoItem";
 
 
-const Todo=()=>{
+const Todo = ({ data }: { data: ItoDoItem }) => {
     return (
-    <div></div>
+        <Fragment>
+            <tr>
+                <th>{data.index}</th>
+                <th>{data.done ? "√" : ""}</th>
+                <th>{data.text}</th>
+                <th></th>
+            </tr>
+        </Fragment>
     )
 }
 
 
-const TableTodoList=()=>{
-    
+const TableTodoList = ({ toDoList }: { toDoList: ItoDoItem[] }) => {
+
     return (
         <table>
             <thead>
-                <th style={{width:"8%"}}>#</th>
-                <th style={{width:"8%"}}>√</th>
-                <th>Title</th>
-                <th style={{width:"15%"}}></th>
+                <tr>
+                    <th style={{ width: "8%" }}>#</th>
+                    <th style={{ width: "8%" }}>√</th>
+                    <th>Title</th>
+                    <th style={{ width: "15%" }}></th>
+                </tr>
             </thead>
             <tbody>
-                <tr>
-                <th>1</th>
-                <th>√</th>
-                <th>My Title</th>
-                </tr>
-                <tr>
-                <th>2</th>
-                <th> </th>
-                <th>My Title.042.045.45.4</th>
-                <th><button >123</button></th>
-                </tr>
+                {toDoList.map((item) => {
+                    return (
+                        <Todo data={item} />
+                    )
+                })}
             </tbody>
         </table>
 
