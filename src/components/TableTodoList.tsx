@@ -3,21 +3,21 @@ import "../styles/TableTodoList.css"
 import { ItoDoItem } from "../interfaces/ItoDoItem";
 
 
-const Todo = ({ data }: { data: ItoDoItem }) => {
+const Todo = ({ data,onClick }: { data: ItoDoItem;onClick:(props:string)=>void }) => {
     return (
         <Fragment>
             <tr>
                 <th>{data.index}</th>
                 <th>{data.done ? "√" : ""}</th>
                 <th>{data.text}</th>
-                <th></th>
+                <th><button onClick={()=>onClick(data.text)}>我看</button></th>
             </tr>
         </Fragment>
     )
 }
 
 
-const TableTodoList = ({ toDoList }: { toDoList: ItoDoItem[] }) => {
+const TableTodoList = ({ toDoList,showDetail }: { toDoList: ItoDoItem[];showDetail:(props:string)=>void }) => {
 
     return (
         <table>
@@ -32,7 +32,7 @@ const TableTodoList = ({ toDoList }: { toDoList: ItoDoItem[] }) => {
             <tbody>
                 {toDoList.map((item) => {
                     return (
-                        <Todo data={item} />
+                        <Todo data={item} key={item.index} onClick={showDetail}/>
                     )
                 })}
             </tbody>

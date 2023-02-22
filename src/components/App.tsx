@@ -5,6 +5,8 @@ import TableTodoList from './TableTodoList';
 import AddTodo from './AddTodo';
 import getTime from '../utils/timeCase';
 import { ItoDoItem } from "../interfaces/ItoDoItem";
+import Modal from './Modal'
+
 
 
 
@@ -13,6 +15,8 @@ const text = "Yjs is a CRDT implementation that exposes its internal data struct
 
 function App() {
   const [todoListArray, setTodoListArray] = useState<ItoDoItem[]>([]);
+  const [showModal,setShowModal]=useState(false)
+  const [modalValue,setModalValue]=useState("")
 
   const Add=(text:string)=>{
 
@@ -26,15 +30,21 @@ function App() {
     // setTodoList([...todoList,{text: text, time: getTime(new Date())}])
   }
 
+  const showDetail =(props:string)=>{
+    setShowModal(true)
+    setModalValue(props)
+  }
+
   return (
     <div className="App">
-      <header className="Contain">
+      <div className="section">
         <h1>
           Todos List
         </h1>
         <AddTodo click={Add}/>
-        <TableTodoList toDoList={todoListArray}/>
-      </header>
+        <TableTodoList toDoList={todoListArray} showDetail={showDetail}/>
+      </div>
+      <Modal show={showModal} showText={modalValue} closeModal={()=>setShowModal(false)} />
     </div>
   );
 }
