@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/App.css';
 import TodoItem from './TodoItem';
-import TableTodoList from './TableTodoList';
+import TableTodoList,{ItoDoItem} from './TableTodoList';
 import AddTodo from './AddTodo';
 import getTime from '../utils/timeCase';
-import { ItoDoItem } from "../interfaces/ItoDoItem";
 import Modal from './Modal'
 
 

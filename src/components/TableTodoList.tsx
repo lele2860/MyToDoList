@@ -1,7 +1,12 @@
 import React, { Fragment } from "react";
 import "../styles/TableTodoList.css"
-import { ItoDoItem } from "../interfaces/ItoDoItem";
 
+export interface ItoDoItem {
+    index: number;
+    done: boolean;
+    text: string;
+    time: string;
+}
 
 const Todo = ({ data,onClick }: { data: ItoDoItem;onClick:(props:string)=>void }) => {
     return (
