@@ -36,6 +36,25 @@
   border-radius: 8px;
 }
 
+.content textarea{
+  word-wrap: break-word;
+  margin: 10px;
+  resize: none;
+  width: 600px;
+  font-size: 18px;
+  border: 1px solid #ddd;
+  outline: none;
+  box-sizing: border-box;
+  min-height: 100px;
+  overflow: hidden;
+  padding: 2px;
+}
+.content textarea:focus{
+  border: 2px solid rgb(135, 206, 250);
+}
+.content text{
+  font-size: 30px;
+}
 .content > button {
   margin: 12px;
 }

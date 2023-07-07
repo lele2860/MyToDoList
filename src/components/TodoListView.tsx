@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import "../styles/TableTodoList.css"
+import "../styles/TodoListView.css"
 
 export interface ItoDoItem {
     index: number;
@@ -14,7 +14,7 @@ const Todo = ({ data,onClick }: { data: ItoDoItem;onClick:(props:string)=>void }
             <tr>
                 <th>{data.index}</th>
                 <th>{data.done ? "√" : ""}</th>
-                <th>{data.text}</th>
+                <th>{data.text.length>60?data.text.slice(0,60)+"...":data.text}</th>
                 <th><button onClick={()=>onClick(data.text)}>我看</button></th>
             </tr>
         </Fragment>
@@ -22,8 +22,7 @@ const Todo = ({ data,onClick }: { data: ItoDoItem;onClick:(props:string)=>void }
 }
 
 
-const TableTodoList = ({ toDoList,showDetail }: { toDoList: ItoDoItem[];showDetail:(props:string)=>void }) => {
-
+const TodoListView = ({ toDoList,showDetail }: { toDoList: ItoDoItem[];showDetail:(props:string)=>void }) => {
     return (
         <table>
             <thead>
@@ -46,4 +45,4 @@ const TableTodoList = ({ toDoList,showDetail }: { toDoList: ItoDoItem[];showDeta
     )
 }
 
-export default TableTodoList
+export default TodoListView

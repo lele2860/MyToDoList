@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/App.css';
 import TodoItem from './TodoItem';
-import TableTodoList,{ItoDoItem} from './TableTodoList';
-import AddTodo from './AddTodo';
+import TodoListView,{ItoDoItem} from './TodoListView';
+import AddTodoForm from './AddTodoForm';
 import getTime from '../utils/timeCase';
 import Modal from './Modal'
 
@@ -14,8 +14,8 @@ const text = "Yjs is a CRDT implementation that exposes its internal data struct
 
 function App() {
   const [todoListArray, setTodoListArray] = useState<ItoDoItem[]>([]);
-  const [showModal,setShowModal]=useState(false)
-  const [modalValue,setModalValue]=useState("")
+  const [showModal,setShowModal]=useState(false);
+  const [modalValue,setModalValue]=useState("");
 
   const Add=(text:string)=>{
 
@@ -40,8 +40,8 @@ function App() {
         <h1>
           Todos List
         </h1>
-        <AddTodo click={Add}/>
-        <TableTodoList toDoList={todoListArray} showDetail={showDetail}/>
+        <AddTodoForm click={Add}/>
+        <TodoListView toDoList={todoListArray} showDetail={showDetail}/>
       </div>
       <Modal show={showModal} showText={modalValue} closeModal={()=>setShowModal(false)} />
     </div>

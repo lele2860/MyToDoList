@@ -1,19 +1,23 @@
-import React, { useState } from 'react'
-import "../styles/AddTodo.css"
+import React, { useState,useRef } from 'react'
+import "../styles/AddTodoForm.css"
 
 
 
 
 
-const AddTodo = (props: any) => {
+const AddTodoForm = (props: any) => {
     const [addValue, setAddValue] = useState("")
     const [isValid, setIsValid] = useState<Boolean>(true)
     const [isTouch, setIsTouch] = useState(false)
     const errorMessage = "好歹写点东西吧"
+    const textAreaRef=useRef<HTMLTextAreaElement>(null);
 
     const handleAddInputChanges = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         if (e.target.value !== "") { setIsValid(false) }
-        setAddValue(e.target.value)
+        setAddValue(e.target.value);
+        e.target.style.height = 'auto';
+        e.target.scrollTop = 0;
+        e.target.style.height = e.target.scrollHeight + 'px';
     }
 
     const handleBlur = (e: React.FocusEvent<HTMLTextAreaElement>) => {
@@ -24,19 +28,25 @@ const AddTodo = (props: any) => {
 
     const callFunction = (e: React.MouseEvent<HTMLInputElement>) => {
         e.preventDefault()
-        if (isValid||addValue==="") { 
+        if (isValid || addValue === "") {
             setIsValid(true)
             setIsTouch(true)
-            return 
+            return
         }
         props.click(addValue)
         setAddValue("")
+        if(textAreaRef.current!=null){
+            textAreaRef.current.style.height = 'auto';
+            textAreaRef.current.scrollTop = 0;
+            textAreaRef.current.style.height = "";
+        }
     }
 
     return (
         <div>
             <form className='listForm'>
                 <textarea
+                ref={textAreaRef}
                     className='textArea'
                     value={addValue}
                     placeholder='write something'
@@ -49,9 +59,9 @@ const AddTodo = (props: any) => {
                     type='submit' />
 
             </form>
-            <small><center>{ isTouch&&isValid && errorMessage}</center></small>
+            <small><center>{isTouch && isValid && errorMessage}</center></small>
         </div>
     )
 }
 
-export default AddTodo
+export default AddTodoForm

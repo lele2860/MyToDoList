@@ -5,7 +5,8 @@ table{
     border-spacing: 0;
 }
 th{
-    text-align:left
+    text-align:left;
+    margin-left: 1px;
 }
 thead{
     font-size: 20px;
